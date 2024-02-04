@@ -5,13 +5,13 @@
 #define yPin A1 
 
 int buttonPin = 13;    // Pushbutton (joystick) connected to digital pin 13.
-int upLED = 12;    // Pushbutton (joystick) connected to digital pin 12.
-int rightLED = 11;    // Pushbutton (joystick) connected to digital pin 11.
-int downLED = 10;    // Pushbutton (joystick) connected to digital pin 10.
-int leftLED = 9;    // Pushbutton (joystick) connected to digital pin 9.
-int pressed = 0;      // Variable to store the read pressedues from the joystick. 0 when pressed, 1 otherwise.
-int xAxis = 0; // X axis.
-int yAxis = 0; // Y axis.
+int upLED = 12;    // LED Connected to digital pin 12.
+int rightLED = 11;    // LED Connected to  Pushbutton (joystick) connected to digital pin 11.
+int downLED = 10;    // LED Connected to  Pushbutton (joystick) connected to digital pin 10.
+int leftLED = 9;    // LED Connected to  Pushbutton (joystick) connected to digital pin 9.
+int pressed = 0;      // Variable to store the state of the joystick. 0 when pressed, 1 otherwise.
+int xAxis = 0; // X axis value will be stored here.
+int yAxis = 0; // Y axis value will be stored here.
 
 void setup() {
   Serial.begin(9600);
@@ -33,10 +33,16 @@ void loop() {
   digitalWrite(downLED, 0);
   digitalWrite(leftLED, 0);
   
+  /*
+  Consider:
+  x axis can have values from 0 to 1023, from left to right.
+  y axis can have values from 0 to 1023, from up to down.
+
+  */
+
   // Cases:
   if (yAxis < 500){
     digitalWrite(upLED, 1);
-
   }
 
   if (yAxis > 524){
@@ -51,11 +57,11 @@ void loop() {
     digitalWrite(rightLED, 1);
   }
 
-  if (digitalRead(buttonPin) == 0){
+  if (digitalRead(buttonPin) == 0){ // Light up all the LEDs!
     digitalWrite(upLED, 1);
     digitalWrite(rightLED, 1);
     digitalWrite(downLED, 1);
     digitalWrite(leftLED, 1);
   }
-  delay(100);
+  delay(100); // Can be modified as necessary.
 }
