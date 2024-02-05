@@ -5,10 +5,14 @@
 #define yPin A1 
 
 int buttonPin = 13;    // Pushbutton (joystick) connected to digital pin 13.
-int upLED = 12;    // LED Connected to digital pin 12.
-int rightLED = 11;    // LED Connected to  Pushbutton (joystick) connected to digital pin 11.
-int downLED = 10;    // LED Connected to  Pushbutton (joystick) connected to digital pin 10.
-int leftLED = 9;    // LED Connected to  Pushbutton (joystick) connected to digital pin 9.
+
+// Set up a resistor for common ground; that is, connect all the cathodes with a resistor for fast prototyping.
+
+// For anodes:
+int upLED = 12;    // LED connected to digital pin 12.
+int rightLED = 11;    // LED connected to digital pin 11.
+int downLED = 10;    // LED connected to digital pin 10.
+int leftLED = 9;    // LED connected to digital pin 9.
 int pressed = 0;      // Variable to store the state of the joystick. 0 when pressed, 1 otherwise.
 int xAxis = 0; // X axis value will be stored here.
 int yAxis = 0; // Y axis value will be stored here.
@@ -21,7 +25,6 @@ void setup() {
   pinMode(rightLED, OUTPUT); // sets the digital pin 11 as output.
   pinMode(downLED, OUTPUT); // sets the digital pin 10 as output.
   pinMode(leftLED, OUTPUT); // sets the digital pin 9 as output.
-  
 }
 
 void loop() {
